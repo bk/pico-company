@@ -1,0 +1,141 @@
+<%namespace name="data" file="/lib/data.mc" />\
+<!doctype html>
+<html lang="${ site_lang or 'en' }"${ ' data-theme="%s"' % site_theme if site_theme else '' }">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${ self.page_title() }</title>
+    <%block name="head_meta">
+      % if meta_description or summary or site_description:
+        <meta name="description" content="${ meta_description or summary or site_description }">
+      % endif
+      % if site_base_url and SELF_URL:
+        <link rel="canonical" href="${ site_base_url or '' }${ site_leading_url_path or '' }${ SELF_URL.replace('index.html', '') }">
+      % endif
+    </%block>
+    <%block name="head_favicon">
+      <link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+    </%block>
+    <%block name="head_stylesheet">
+      <link rel="stylesheet" href="/css/style.css">
+    </%block>
+    <%block name="head_extra"></%block>
+    <style type="text/css"><%block name="inline_css"></%block></style>
+  </head>
+
+  <body>
+
+    <%block name="hero_with_topnav">
+      <!-- Hero -->
+      <div class="hero" data-theme="dark">
+        <%block name="topnav">
+          <nav class="container-fluid">
+            <ul>
+              <%block name="topnav_brand">
+                <li><a href="/" class="contrast"><strong>${ site_topnav_brand or 'Brand' }</strong></a></li>
+              </%block>
+            </ul>
+            <ul>
+              <%block name="topnav_links">
+                % for link in site_top_nav_links or []:
+                  <li><a href="${ link['url'] }" class="contrast">${ link['title'] }</a></li>
+                % else:
+                  <li><a href="#" class="contrast">Products</a></li>
+                  <li><a href="${ site_leading_url_path or '' }/blog/" class="contrast">Blog</a></li>
+                  <li><a href="#" class="contrast">Our mission</a></li>
+                % endfor
+              </%block>
+            </ul>
+          </nav>
+        </%block>
+        <%block name="hero">
+          <header class="container">
+            <hgroup>
+              <h1>${ site_hero_title or 'Generic Company' }</h1>
+              <h2>${ site_hero_tagline or 'In omnis ratione totam et occaecati inventor' }</h2>
+            </hgroup>
+            <%block name="hero_call_to_action">
+              % if site_hero_call_to_action:
+                <p><a href="${ site_hero_call_to_action['url'] }" role="button"">${ site_hero_call_to_action['title'] }</a></p>
+              % else:
+                <p><a href="#" role="button">Suscipit laudantium</a></p>
+              % endif
+            </%block>
+          </header>
+        </%block>
+      </div><!-- ./ Hero -->
+    </%block>
+
+    <!-- Main -->
+    <main class="container">
+      <div class="grid">
+        <section>
+          <%block name="main_content">
+            % if CONTENT:
+              <hgroup>
+                <h2>${ title }</h2>
+                % if subtitle:
+                  <h3>${ subtitle }</h3>
+                % endif
+              </hgroup>
+              ${ CONTENT }
+            % else:
+              ${ next.body() }
+            % endif
+          </%block>
+        </section>
+        <%block name="sidebar">
+          % if not without_sidebar:
+            <% sidebar_entries = data.get_sidebar(4) %>
+            % if sidebar_entries:
+              <aside>
+                % for entry in sidebar_entries:
+                  <a href="${ entry['url'] }"><img src="${ entry['image'] }" alt="${ entry['title'] }"></a>
+                  <p>
+                    <a href="${ entry['url'] }">${ entry['title'] }</a><br>
+                    <small>${ entry.get('subtitle','') or entry.get('summary', '') }</small>
+                  </p>
+                % endfor
+              </aside>
+            % endif
+          % endif
+      </%block>
+
+      </div>
+    </main><!-- ./ Main -->
+
+    <%block name="before_footer">
+      <!-- Subscribe -->
+      <section aria-label="Subscribe example">
+        <div class="container">
+          <article>
+            <hgroup>
+              <h2>Subscribe</h2>
+              <h3>Litora torquent per conubia nostra</h3>
+            </hgroup>
+            <form class="grid">
+              <input type="text" id="firstname" name="firstname" placeholder="First name" aria-label="First name" required>
+              <input type="email" id="email" name="email" placeholder="Email address" aria-label="Email address" required>
+              <button type="submit"">Subscribe</button>
+            </form>
+          </article>
+        </div>
+      </section><!-- ./ Subscribe -->
+    </%block>
+
+    <%block name="footer">
+      <!-- Footer -->
+      <footer class="container">
+        <small>Built with <a href="https://picocss.com">Pico</a>
+          and <a href="https://github.com/bk/wmk">wmk</a>
+          • <a href="${ site_leading_path or '' }/">${ site_hero_title or 'Generic Company' }</a></small>
+      </footer><!-- ./ Footer -->
+    </%block>
+
+    <%block name="site_javasript"></%block>
+    <script><%block name="inline_js"></%block></script>
+  </body>
+
+</html>
+<%def name="page_title()">${ title if title else site_title if site_title else 'Generic Company' }</%def>
