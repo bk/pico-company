@@ -69,14 +69,16 @@
 
     <!-- Main -->
     <main class="container">
-      <div class="grid">
+      <div class="grid${ self.main_container_grid_class() }">
         <section>
           <%block name="main_content">
             % if CONTENT:
               <hgroup>
-                <h2>${ title }</h2>
+                <h1>${ title }</h1>
                 % if subtitle:
-                  <h3>${ subtitle }</h3>
+                  <h2>${ subtitle }</h2>
+                % else:
+                  <div />
                 % endif
               </hgroup>
               ${ CONTENT }
@@ -105,24 +107,7 @@
       </div>
     </main><!-- ./ Main -->
 
-    <%block name="before_footer">
-      <!-- Subscribe -->
-      <section aria-label="Subscribe example">
-        <div class="container">
-          <article>
-            <hgroup>
-              <h2>Subscribe</h2>
-              <h3>Litora torquent per conubia nostra</h3>
-            </hgroup>
-            <form class="grid">
-              <input type="text" id="firstname" name="firstname" placeholder="First name" aria-label="First name" required>
-              <input type="email" id="email" name="email" placeholder="Email address" aria-label="Email address" required>
-              <button type="submit"">Subscribe</button>
-            </form>
-          </article>
-        </div>
-      </section><!-- ./ Subscribe -->
-    </%block>
+    <%block name="before_footer"></%block>
 
     <%block name="footer">
       <!-- Footer -->
@@ -138,4 +123,7 @@
   </body>
 
 </html>
+
 <%def name="page_title()">${ title if title else site_title if site_title else 'Generic Company' }</%def>
+
+<%def name="main_container_grid_class()">${ '' if without_sidebar else ' with-sidebar' }</%def>

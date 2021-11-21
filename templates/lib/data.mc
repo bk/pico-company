@@ -1,4 +1,3 @@
-
 <%def name="get_sidebar(limit=3)">\
 <%
 default_entries = [
@@ -9,9 +8,9 @@ default_entries = [
 ]
 sidebar_content = []
 for it in MDCONTENT:
-    if it['data']['sidebar']:
+    if it['data'].get('sidebar', False):
         entry = {
-            'url': it['url'],
+            'url': it['data'].get('sidebar_item_url') or it['url'],
             'title': it['data']['title'],
             'image': it['data']['image'],
             'subtitle': it['data'].get('subtitle') or it['data'].get('summary', ''),

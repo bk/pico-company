@@ -38,7 +38,7 @@ header hgroup {
 
 /* Main */
 @media (min-width: map-get($breakpoints, "lg")) {
-  main .grid {
+  main .grid.with-sidebar {
     grid-column-gap: var(--spacing-company);
     grid-template-columns: auto 25%;
   }
