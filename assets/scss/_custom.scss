@@ -2,7 +2,7 @@
 :root {
   --spacing-company: 3rem;
   --font-weight: 400;
-  --border-radius: 0;
+  --border-radius: .25rem;
 }
 
 /* Typography */
@@ -57,3 +57,8 @@ aside p {
   margin-bottom: var(--spacing-company);
   line-height: 1.25;
 }
+/*
+button, a[role="button"] {
+  border-radius: var(--border-radius);
+}
+*/

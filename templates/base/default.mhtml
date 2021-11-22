@@ -20,6 +20,26 @@
     <%block name="head_stylesheet">
       <link rel="stylesheet" href="/css/style.css">
     </%block>
+    <%block name="head_fonts">
+      % if site_google_font:
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=${ site_google_font |u }&display=swap" rel="stylesheet">
+        % if site_google_font_headings:
+        <link href="https://fonts.googleapis.com/css2?family=${ site_google_font_headings |u }&display=swap" rel="stylesheet">
+         % endif
+        <style type="text/css">
+         :root {
+             --font-family: "${ site_google_font }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+         }
+         % if site_google_font_headings:
+         h1, h2, h3, h4, h5, h6, .hero > nav, hgroup > *:last-child, button, a[role="button"] {
+             font-family: "${ site_google_font_headings }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+         }
+         % endif
+        </style>
+      % endif
+    </%block>
     <%block name="head_extra"></%block>
     <style type="text/css"><%block name="inline_css"></%block></style>
   </head>
@@ -99,6 +119,20 @@
                     <small>${ entry.get('subtitle','') or entry.get('summary', '') }</small>
                   </p>
                 % endfor
+              </aside>
+            % else:
+              <aside>
+                <h4>Sidebar</h4>
+                <p><small>
+                  Put items into the sidebar by setting <code>sidebar:
+                  true</code> in the frontmatter.  The order can be affected
+                  with <code>sidebar_order</code>.  Each item should have an
+                  <code>image</code>, a <code>title</code> and a
+                  <code>subtitle</code> or <code>summary</code>. If you wish to
+                  point to something which is not on the site, set
+                  <code>sidebar_item_url</code> and <code>do_not_render</code>.
+                  By default, 4 items are shown.
+                </small></p>
               </aside>
             % endif
           % endif
