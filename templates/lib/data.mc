@@ -2,13 +2,14 @@
 <%
 sidebar_content = []
 for it in MDCONTENT:
-    if it['data'].get('sidebar', False):
+    pg = it['data']['page']
+    if pg.sidebar:
         entry = {
-            'url': it['data'].get('sidebar_item_url') or it['url'],
-            'title': it['data']['title'],
-            'image': it['data']['image'],
-            'subtitle': it['data'].get('subtitle') or it['data'].get('summary', ''),
-            'order': it['data'].get('sidebar_order') or 0
+            'url': pg.sidebar_item_url or it['url'],
+            'title': pg.title,
+            'image': pg.image,
+            'subtitle': pg.subtitle or pg.summary or '',
+            'order': pg.sidebar_order or 0
         }
         sidebar_content.append(entry)
 # TODO: optionally sort by pubdate or a combination of factors

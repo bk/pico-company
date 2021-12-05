@@ -1,17 +1,17 @@
 <%namespace name="data" file="/lib/data.mc" />\
 <!doctype html>
-<html lang="${ site_lang or 'en' }"${ ' data-theme="%s"' % site_theme if site_theme else '' }">
+<html lang="${ site.lang or 'en' }"${ ' data-theme="%s"' % site.theme if site.theme else '' }">
 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${ self.page_title() }</title>
     <%block name="head_meta">
-      % if meta_description or summary or site_description:
-        <meta name="description" content="${ meta_description or summary or site_description }">
+      % if page.meta_description or page.summary or site.description:
+        <meta name="description" content="${ page.meta_description or page.summary or site.description }">
       % endif
-      % if site_base_url and SELF_URL:
-        <link rel="canonical" href="${ site_base_url or '' }${ site_leading_url_path or '' }${ SELF_URL.replace('index.html', '') }">
+      % if site.base_url and SELF_URL:
+        <link rel="canonical" href="${ site.base_url or '' }${ site.leading_url_path or '' }${ SELF_URL.replace('index.html', '') }">
       % endif
     </%block>
     <%block name="head_favicon">
@@ -21,21 +21,23 @@
       <link rel="stylesheet" href="/css/style.css">
     </%block>
     <%block name="head_fonts">
-      % if site_google_font:
+      % if site.google_font:
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=${ site_google_font |u }&display=swap" rel="stylesheet">
-        % if site_google_font_headings:
-        <link href="https://fonts.googleapis.com/css2?family=${ site_google_font_headings |u }&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=${ site.google_font |u }&display=swap" rel="stylesheet">
+        % if site.google_font_headings:
+        <link href="https://fonts.googleapis.com/css2?family=${ site.google_font_headings |u }&display=swap" rel="stylesheet">
          % endif
         <style type="text/css">
          :root {
-             --font-family: "${ site_google_font }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+             --font-family: "${ site.google_font }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
          }
-         % if site_google_font_headings:
-         h1, h2, h3, h4, h5, h6, .hero > nav, hgroup > *:last-child, button, a[role="button"] {
-             font-family: "${ site_google_font_headings }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-         }
+         % if site.google_font_headings:
+           h1, h2, h3, h4, h5, h6,
+           .hero > nav, hgroup > *:last-child,
+           button, a[role="button"], input[type="submit"] {
+             font-family: "${ site.google_font_headings }", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+           }
          % endif
         </style>
       % endif
@@ -53,16 +55,16 @@
           <nav class="container-fluid">
             <ul>
               <%block name="topnav_brand">
-                <li><a href="/" class="contrast"><strong>${ site_topnav_brand or 'Brand' }</strong></a></li>
+                <li><a href="/" class="contrast"><strong>${ site.topnav_brand or 'Brand' }</strong></a></li>
               </%block>
             </ul>
             <ul>
               <%block name="topnav_links">
-                % for link in site_top_nav_links or []:
+                % for link in site.topnav_links or []:
                   <li><a href="${ link['url'] }" class="contrast">${ link['title'] }</a></li>
                 % else:
                   <li><a href="#" class="contrast">Products</a></li>
-                  <li><a href="${ site_leading_url_path or '' }/blog/" class="contrast">Blog</a></li>
+                  <li><a href="${ site.leading_url_path or '' }/blog/" class="contrast">Blog</a></li>
                   <li><a href="#" class="contrast">Our mission</a></li>
                 % endfor
               </%block>
@@ -72,12 +74,12 @@
         <%block name="hero">
           <header class="container">
             <hgroup>
-              <h1>${ site_hero_title or 'Generic Company' }</h1>
-              <h2>${ site_hero_tagline or 'In omnis ratione totam et occaecati inventor' }</h2>
+              <h1>${ site.hero_title or 'Generic Company' }</h1>
+              <h2>${ site.hero_tagline or 'In omnis ratione totam et occaecati inventor' }</h2>
             </hgroup>
             <%block name="hero_call_to_action">
-              % if site_hero_call_to_action:
-                <p><a href="${ site_hero_call_to_action['url'] }" role="button"">${ site_hero_call_to_action['title'] }</a></p>
+              % if site.hero_call_to_action:
+                <p><a href="${ site.hero_call_to_action['url'] }" role="button"">${ site.hero_call_to_action['title'] }</a></p>
               % else:
                 <p><a href="#" role="button">Suscipit laudantium</a></p>
               % endif
@@ -94,9 +96,9 @@
           <%block name="main_content">
             % if CONTENT:
               <hgroup>
-                <h1>${ title }</h1>
-                % if subtitle:
-                  <h2>${ subtitle }</h2>
+                <h1>${ page.title }</h1>
+                % if page.subtitle:
+                  <h2>${ page.subtitle }</h2>
                 % else:
                   <div />
                 % endif
@@ -108,12 +110,14 @@
           </%block>
         </section>
         <%block name="sidebar">
-          % if not without_sidebar:
-            <% sidebar_entries = data.get_sidebar(4) %>
+          % if not page.without_sidebar:
+            <% sidebar_entries = data.get_sidebar(site.sidebar_item_count or 4) %>
             % if sidebar_entries:
               <aside>
                 % for entry in sidebar_entries:
+                  % if 'image' in entry:
                   <a href="${ entry['url'] }"><img src="${ entry['image'] }" alt="${ entry['title'] }"></a>
+                  % endif
                   <p>
                     <a href="${ entry['url'] }">${ entry['title'] }</a><br>
                     <small>${ entry.get('subtitle','') or entry.get('summary', '') }</small>
@@ -125,11 +129,11 @@
                 <h4>Sidebar</h4>
                 <p><small>
                   Put items into the sidebar by setting <code>sidebar:
-                  true</code> in the frontmatter.  The order can be affected
+                  true</code> in their frontmatter.  The order can be affected
                   with <code>sidebar_order</code>.  Each item should have an
                   <code>image</code>, a <code>title</code> and a
                   <code>subtitle</code> or <code>summary</code>. If you wish to
-                  point to something which is not on the site, set
+                  link to something which is not on the site, set
                   <code>sidebar_item_url</code> and <code>do_not_render</code>.
                   By default, 4 items are shown.
                 </small></p>
@@ -148,7 +152,7 @@
       <footer class="container">
         <small>Built with <a href="https://picocss.com">Pico</a>
           and <a href="https://github.com/bk/wmk">wmk</a>
-          • <a href="${ site_leading_path or '' }/">${ site_hero_title or 'Generic Company' }</a></small>
+          • <a href="${ site.leading_path or '' }/">${ site.hero_title or 'Generic Company' }</a></small>
       </footer><!-- ./ Footer -->
     </%block>
 
@@ -158,6 +162,6 @@
 
 </html>
 
-<%def name="page_title()">${ title if title else site_title if site_title else 'Generic Company' }</%def>
+<%def name="page_title()">${ page.title or site.title or 'Generic Company' }</%def>
 
-<%def name="main_container_grid_class()">${ '' if without_sidebar else ' with-sidebar' }</%def>
+<%def name="main_container_grid_class()">${ '' if page.without_sidebar else ' with-sidebar' }</%def>

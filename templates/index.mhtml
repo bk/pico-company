@@ -1,19 +1,25 @@
 <%inherit file="base/default.mhtml" />
-<%def name="page_title()">Frontpage - Ut sit amet sem ut velit</%def>
+<%def name="page_title()">Pico-Company</%def>
 
 <hgroup>
-  <h2>Ut sit amet sem ut velit</h2>
-  <h3>Quisque mi est</h3>
+  <h2>Pico-Company – a wmk corporate theme</h2>
+  <h3>Setup and configuration</h3>
 </hgroup>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lobortis est vel velit bibendum ultrices. Sed aliquam tortor vel odio fermentum ullamcorper eu vitae neque. Sed non diam at tellus venenatis viverra. Vestibulum et leo laoreet arcu tempor eleifend venenatis ac leo. Pellentesque euismod justo sed nisl sollicitudin varius. Duis venenatis nisl sit amet ante rutrum posuere. Etiam nec ullamcorper leo, sed placerat mauris.</p>
+<p>Add this theme to your site by cloning it into <code>themes</code> as <code>pico-company</code> or adding it as a git submodule. Then add the line <code>theme: pico-company</code> to your <code>wmk_config.yaml</code> and rebuild the site.</p>
 <figure>
   <img src="/img/example1.jpg" alt="Repudiandae fuga sunt magni">
-    <figcaption>Cum est provident ut adipisci</figcaption>
+  <figcaption>This is an example image inside a &lt;figure&gt; tag. Figures can be added to Markdown content by using the <code>figure</code> shortcode.</figcaption>
 </figure>
-<h3>Nulla augue metus</h3>
-<p>Pacilisis sed ante ut, posuere volutpat quam. Maecenas maximus blandit mi ac finibus. Proin quis lacinia tellus. Aliquam erat volutpat. Aliquam erat volutpat. Phasellus suscipit nisi augue, id accumsan tortor auctor ut. Duis odio arcu, egestas nec nulla vel, fermentum bibendum ex.</p>
-<h3>Sed purus sapien, porta a cursus sed, maximus et metus.</h3>
-<p>Phasellus molestie ante sed massa bibendum, eget tempus ex sollicitudin. Vestibulum libero nulla, porttitor nec faucibus et, scelerisque eget quam. Nullam finibus tempor dui, vel congue urna condimentum ac. Fusce ultricies mauris justo, nec vulputate mauris pulvinar eu. Sed tempus ligula lorem, at tincidunt risus mollis non. Quisque et turpis sit amet sapien gravida ullamcorper in eu velit. Curabitur luctus ornare finibus. Proin tempor nulla sagittis est fermentum dapibus. Vestibulum posuere mattis congue. Ut porttitor id sem euismod tristique. Quisque mi est, posuere nec lorem eu, vulputate vehicula diam. Nullam scelerisque, libero posuere efficitur bibendum, urna odio finibus lorem, sed volutpat dolor ligula in dolor. Suspendisse suscipit efficitur neque, ut porta tellus mollis vel. Nam consequat arcu ac tellus porta, nec egestas orci sodales.</p>
+<h3>Site variables</h3>
+<ul>
+  <li><code>site.title</code>, <code>site.description</code>, <code>site.keywords</code> and <code>site.lang</code> set basic metadata.</li>
+  <li><code>site.base_url</code> should be set to a hostname with a http/https prefix and no slash at the end. <code>site.leading_path</code> is usually an empty string but can be set to a path relative to a web root if the wmk site put into a subdirectory. Again, the path should not have a trailing slash.</li>
+  <li><code>site.google_font</code> is an optional name of a font on Google Fonts, e.g. &quot;Gentium Book Basic&quot;. It is also possible to specify a separate font for headings and a few other things with <code>site.google_font_headings</code>.</li>
+  <li><code>site.topnav_brand</code> is the brand name/image to be shown in the top left corner, while <code>site.topnav_links</code> are links for the top navigation at the top left. Each item in the list of links should have the attributes <code>url</code> and <code>title</code>.</li>
+  <li><code>site.hero_title</code> and <code>site.hero_tagline</code> indicate the contents of the text atop the hero header; <code>site.hero_call_to_action</code> is the hero button and should have the attributes <code>url</code> and <code>title</code>.</li>
+</ul>
+<h3>The sidebar</h3>
+<p>The sidebar is normally populated with Markdown content which has <code>sidebar: true</code> in the frontmatter. The order can be affected with <code>sidebar_order</code>. Each item should have an image, a title and a subtitle or summary. If you wish to link to something which is not on the site, set <code>sidebar_item_url</code> and add <code>do_not_render: true</code> to the frontmatter. By default, 4 items are shown.</p>
 
 <%block name="before_footer">
   <!-- Subscribe -->
@@ -22,7 +28,7 @@
       <article>
         <hgroup>
           <h2>Subscribe</h2>
-          <h3>Litora torquent per conubia nostra</h3>
+          <h3>This is an example form. Remove it by overriding the <code>before_footer</code> block.</h3>
         </hgroup>
         <form class="grid">
           <input type="text" id="firstname" name="firstname" placeholder="First name" aria-label="First name" required>
