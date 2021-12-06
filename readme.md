@@ -10,8 +10,10 @@ designed for that. The theme is based on the
 CSS framework](https://picocss.com/).
 
 Add Pico-Company to your site by cloning it into `themes` as
-`pico-company` or adding it as a git submodule. Then add the line
-`theme: pico-company` to your `wmk_config.yaml` and rebuild the site.
+`pico-company` or adding it as a git submodule. Note that you also need to run
+`git submodule update --init` inside the newly cloned repo so as to to fetch
+the Pico CSS framework.  Then add the line `theme: pico-company` to your
+`wmk_config.yaml` and rebuild the site.
 
 A demo of the theme can be found [here](https://pico-company.baldr.net/).
 
