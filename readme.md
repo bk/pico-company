@@ -33,7 +33,7 @@ A demo of the theme can be found [here](https://pico-company.baldr.net/).
     `site.google_font_headings`.
 -   `site.topnav_brand` is the brand name/image to be shown in the top
     left corner, while `site.topnav_links` are links for the top
-    navigation at the top left. Each item in the list of links should
+    navigation at the top right. Each item in the list of links should
     have the attributes `url` and `title`.
 -   `site.hero_title` and `site.hero_tagline` indicate the contents of
     the text atop the hero header; `site.hero_call_to_action` is the
