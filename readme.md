@@ -13,6 +13,8 @@ Add Pico-Company to your site by cloning it into `themes` as
 `pico-company` or adding it as a git submodule. Then add the line
 `theme: pico-company` to your `wmk_config.yaml` and rebuild the site.
 
+A demo of the theme can be found [here](https://pico-company.baldr.net/).
+
 
 ## Site variables
 
