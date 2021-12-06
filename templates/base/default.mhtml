@@ -49,7 +49,7 @@
   <body>
 
     <%block name="hero_with_topnav">
-      <!-- Hero -->
+      <!-- Topnav + Hero -->
       <div class="hero" data-theme="dark">
         <%block name="topnav">
           <nav class="container-fluid">
@@ -72,21 +72,25 @@
           </nav>
         </%block>
         <%block name="hero">
-          <header class="container">
-            <hgroup>
-              <h1>${ site.hero_title or 'Generic Company' }</h1>
-              <h2>${ site.hero_tagline or 'In omnis ratione totam et occaecati inventor' }</h2>
-            </hgroup>
-            <%block name="hero_call_to_action">
-              % if site.hero_call_to_action:
-                <p><a href="${ site.hero_call_to_action['url'] }" role="button"">${ site.hero_call_to_action['title'] }</a></p>
-              % else:
-                <p><a href="#" role="button">Suscipit laudantium</a></p>
-              % endif
-            </%block>
-          </header>
+          % if page.with_hero or SELF_URL.replace('index.html', '') == '/':
+            <header class="container">
+              <hgroup>
+                <h1>${ page.hero_title or site.hero_title or 'Generic Company' }</h1>
+                <h2>${ page.hero_tagline or site.hero_tagline or 'In omnis ratione totam et occaecati inventor' }</h2>
+              </hgroup>
+              <%block name="hero_call_to_action">
+                % if page.hero_no_call_to_action:
+                  <% return '' %>
+                % elif page.hero_call_to_action or site.hero_call_to_action:
+                  <p><a href="${ page.hero_call_to_action['url'] or site.hero_call_to_action['url'] }" role="button"">${ page.hero_call_to_action['title'] or site.hero_call_to_action['title'] }</a></p>
+                % elif SELF_URL.replace('index.html', '') == '/':
+                  <p><a href="#" role="button">Suscipit laudantium</a></p>
+                % endif
+              </%block>
+            </header>
+          % endif
         </%block>
-      </div><!-- ./ Hero -->
+      </div><!-- ./ Topnav + Hero -->
     </%block>
 
     <!-- Main -->

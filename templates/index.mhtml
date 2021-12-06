@@ -20,6 +20,8 @@
 </ul>
 <h3>The sidebar</h3>
 <p>The sidebar is normally populated with Markdown content which has <code>sidebar: true</code> in the frontmatter. The order can be affected with <code>sidebar_order</code>. Each item should have an image, a title and a subtitle or summary. If you wish to link to something which is not on the site, set <code>sidebar_item_url</code> and add <code>do_not_render: true</code> to the frontmatter. By default, 4 items are shown.</p>
+<h3>The hero block</h3>
+<p>By default, the hero component is only shown on the frontpage. You can turn it on in markdown content by setting <code>with_hero</code> to true in the frontmatter. You can also control the content of the block by setting the variables <code>hero_title</code>, <code>hero_tagline</code> and <code>hero_call_to_action</code>, similarly to the corresponding site variables. The call to action button can be turned off by setting <code>hero_no_call_to_action</code> to true. <a href="/ipsum/dolor/">Example</a>.</p>
 
 <%block name="before_footer">
   <!-- Subscribe -->

@@ -2,9 +2,13 @@
 title: Repellendus quos sit rem
 subtitle: Quis aut et consectetur fugiat perferendis quod
 without_sidebar: true
+with_hero: true
+hero_title: Custom hero title
+hero_tagline: Special hero tagline quisquam natus aut cupidate
+hero_no_call_to_action: true
 ---
 
-This page is without a sidebar since `without_sidebar` is `true`.
+This page is without a sidebar since `without_sidebar` is `true`. It also has a hero block with custom content and no call to action.
 
 Sint et commodi rerum et. Maiores qui dignissimos tenetur expedita. Totam earum sed sunt officia repellat ipsa corrupti placeat. Cum quo est omnis porro earum quae modi. Eos tenetur accusantium commodi harum doloribus. Enim deleniti aut molestiae est odit sit id sed.
 
