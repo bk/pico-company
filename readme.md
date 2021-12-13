@@ -1,21 +1,21 @@
-# Pico-Company – a wmk corporate theme
+# Picompany – a wmk corporate theme
 
 ## Setup and configuration
 
-Pico-Company is a theme for the [wmk](https://github.com/bk/wmk) static site
+Picompany is a theme for the [wmk](https://github.com/bk/wmk) static site
 generator. It is suitable for the website of a company, open source project,
 club, or similar. It can also be used for a personal blog but is not specially
 designed for that. The theme is based on the
 [Company](https://picocss.com/examples/company/) example for the [Pico
 CSS framework](https://picocss.com/).
 
-Add Pico-Company to your site by cloning it into `themes` as
-`pico-company` or adding it as a git submodule. Note that you also need to run
+Add Picompany to your site by cloning it into `themes` as
+`picompany` or adding it as a git submodule. Note that you also need to run
 `git submodule update --init` inside the newly cloned repo so as to to fetch
-the Pico CSS framework.  Then add the line `theme: pico-company` to your
+the Pico CSS framework.  Then add the line `theme: picompany` to your
 `wmk_config.yaml` and rebuild the site.
 
-A demo of the theme can be found [here](https://pico-company.baldr.net/).
+A demo of the theme can be found [here](https://picompany.baldr.net/).
 
 
 ## Site variables

@@ -1,12 +1,12 @@
 <%inherit file="base/default.mhtml" />
-<%def name="page_title()">Pico-Company</%def>
+<%def name="page_title()">Picompany</%def>
 
 <hgroup>
-  <h2>Pico-Company – a wmk corporate theme</h2>
+  <h2>Picompany – a wmk corporate theme</h2>
   <h3>Setup and configuration</h3>
 </hgroup>
-<p>Pico-Company is a theme that is suitable for the website of a company, open source project, club, or similar. It can be used for a personal blog but is not specially designed for that. The theme is based on the <a href="https://picocss.com/examples/company/">Company</a> example for the <a href="https://picocss.com/">Pico CSS framework</a>.</p>
-<p>Add Pico-Company to your site by cloning it into <code>themes</code> as <code>pico-company</code> or adding it as a git submodule. Remember to run <code>git submodule update --init --recursive</code> to fetch dependencies. Then add the line <code>theme: pico-company</code> to your <code>wmk_config.yaml</code> and rebuild the site.</p>
+<p>Picompany is a theme that is suitable for the website of a company, open source project, club, or similar. It can be used for a personal blog but is not specially designed for that. The theme is based on the <a href="https://picocss.com/examples/company/">Company</a> example for the <a href="https://picocss.com/">Pico CSS framework</a>.</p>
+<p>Add Picompany to your site by cloning it into <code>themes</code> as <code>picompany</code> or adding it as a git submodule. Remember to run <code>git submodule update --init --recursive</code> to fetch dependencies. Then add the line <code>theme: picompany</code> to your <code>wmk_config.yaml</code> and rebuild the site.</p>
 <figure>
   <img src="/img/example1.jpg" alt="Repudiandae fuga sunt magni">
   <figcaption>This is an example image inside a &lt;figure&gt; tag. Figures can be added to Markdown content by using the <code>figure</code> shortcode.</figcaption>
